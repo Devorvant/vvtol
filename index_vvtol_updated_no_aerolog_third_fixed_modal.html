@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sergey Teterin – Flight Control & UAV Systems Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- SEO meta -->
+    <meta name="description"
+          content="Applied engineering in flight control, UAV/UAS and robotics. Flight control systems, flight dynamics, autopilots, telemetry analytics, MATLAB/Simulink, Python, machine learning and computer vision. Open to remote work worldwide.">
+    <meta name="keywords"
+          content="flight control, UAV, UAS, autopilot, flight dynamics, GNC, MATLAB, Simulink, robotics, eVTOL, VTOL, urban mobility, telemetry, sensor fusion, machine learning, computer vision, embedded systems, uav logistics, uav delivery, mission planning, SLA, unit economics">
+
+    <style>
+        :root {
+            --bg: #05070a;
+            --bg-alt: #0c1017;
+            --accent: #4cc2ff;
+            --accent-soft: rgba(76, 194, 255, 0.12);
+            --text: #f5f7fb;
+            --muted: #a0a7b7;
+            --border: #222836;
+            --card-radius: 14px;
+            --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.4);
+            --max-width: 1080px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: linear-gradient(
+        to bottom,
+        #05070a 0%,    /* почти чёрный наверху */
+        #0b1224 35%,   /* тёмно-синий */
+        #0b1224 70%,   /* насыщенный синий */
+        #0b1224 100%   /*  */
+    );
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+     }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(14px);
+            background: linear-gradient(to bottom, rgba(5, 7, 10, 0.94), rgba(5, 7, 10, 0.82));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .nav {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            font-size: 0.94rem;
+        }
+
+        /* логотип Veloca */
+        .nav-logo-img {
+            height: 156px;    /* при желании подправь */
+            width: auto;
+            display: inline-block;
+            filter: drop-shadow(0 0 6px rgba(0,0,0,0.6));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 16px;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 999px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .nav-links a.primary-link {
+            border: 1px solid rgba(76, 194, 255, 0.6);
+            color: var(--accent);
+            background: rgba(76, 194, 255, 0.08);
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 28px 18px 32px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+            gap: 30px;
+            padding-top: 32px;
+            padding-bottom: 32px;
+        }
+
+        @media (max-width: 840px) {
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .hero-main-title {
+            font-size: 1.45rem;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .hero-name {
+            font-size: 2.15rem;
+            font-weight: 700;
+            margin: 2px 0 8px;
+        }
+
+        .hero-role {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 520px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 18px 0;
+        }
+
+        .badge {
+            border-radius: 999px;
+            border: 1px solid rgba(76, 194, 255, 0.4);
+            padding: 6px 12px;
+            font-size: 0.78rem;
+            color: var(--accent);
+            background: rgba(13, 25, 54, 0.9);
+        }
+
+        .badge.muted {
+            border-color: rgba(255, 255, 255, 0.08);
+            color: var(--muted);
+            background: rgba(17, 20, 30, 0.9);
+        }
+
+        .hero-text {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: var(--muted);
+            max-width: 640px;
+        }
+
+        .hero-actions {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 999px;
+            padding: 10px 18px;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4cc2ff, #1773ff);
+            color: #05070a;
+            font-weight: 600;
+            box-shadow: 0 16px 30px rgba(23, 115, 255, 0.35);
+        }
+
+        .btn-outline {
+            border-color: rgba(255, 255, 255, 0.18);
+            color: var(--muted);
+            background: rgba(10, 12, 18, 0.9);
+        }
+
+        .btn-primary:hover,
+        .btn-outline:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-card {
+            background: radial-gradient(circle at top left, #1b2644 0, #05070a 70%);
+            border-radius: var(--card-radius);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 18px 18px 16px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero-card-sub {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .hero-matrix {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 6px;
+            font-size: 0.78rem;
+        }
+
+        .hero-matrix-item {
+            padding: 8px 9px;
+            border-radius: 8px;
+            background: rgba(7, 13, 25, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .hero-matrix-label {
+            color: var(--muted);
+            margin-bottom: 2px;
+        }
+
+        .hero-matrix-value {
+            font-weight: 500;
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .chip {
+            font-size: 0.74rem;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: rgba(8, 14, 26, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            color: var(--muted);
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+            gap: 22px;
+        }
+
+        @media (max-width: 840px) {
+            .grid-2 {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .card {
+            background: rgba(7, 9, 16, 0.96);
+            border-radius: var(--card-radius);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 16px 16px 14px;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .card-kicker {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+        .card-body {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 720px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            .skills-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .skill-pill {
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(11, 15, 25, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .skill-pill span {
+            color: var(--muted);
+        }
+
+        .skill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
+        .project-list {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .project-item {
+            padding: 9px 11px;
+            border-radius: 10px;
+            background: rgba(9, 13, 23, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .project-meta {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .list li + li {
+            margin-top: 4px;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+        }
+
+        .columns-2 {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        @media (max-width: 700px) {
+            .columns-2 {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .small-card {
+            background: rgba(8, 12, 22, 0.96);
+            border-radius: var(--card-radius);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 12px 14px 11px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+            font-size: 0.86rem;
+            color: var(--muted);
+        }
+
+        .small-card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            margin-top: 16px;
+        }
+
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 16px 18px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--muted);
+        }
+
+        .inline-link {
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+
+
+.project-card {
+    cursor: pointer;
+}
+
+.project-card:hover {
+    border-color: rgba(76, 194, 255, 0.7);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+}
+
+
+
+/* --- Accordion portfolio cards --- */
+
+.accordion {
+    display: grid;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.accordion-card {
+    background: rgba(9, 13, 23, 0.96);
+    border-radius: var(--card-radius);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+    padding: 10px 12px;
+}
+
+.accordion-toggle {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text);
+    font: inherit;
+}
+
+.accordion-title {
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.accordion-meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+.accordion-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.accordion-card.open .accordion-icon {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: rgba(76, 194, 255, 0.7);
+}
+
+.accordion-body {
+    display: none;
+    padding-top: 8px;
+    margin-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.accordion-card.open .accordion-body {
+    display: block;
+}
+
+.accordion-body ul {
+    margin: 6px 0 4px;
+    padding-left: 18px;
+}
+
+.accordion-body ul li + li {
+    margin-top: 4px;
+}
+
+.accordion-tags {
+    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.accordion-tag {
+    font-size: 0.74rem;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(8, 12, 22, 0.9);
+    color: var(--muted);
+}
+
+
+.accordion-image {
+    width: 60%;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    display: block;
+    object-fit: cover;
+    max-height: 300px; /* можешь менять по вкусу */
+}
+
+
+
+.accordion-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accordion-thumb {
+    width: 52px;         /* размер превью – можно менять */
+    height: 52px;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+
+
+/* --- Modal project view (Upwork-style overlay) --- */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal {
+    background: #05070a;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    max-width: 1100px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;  
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.75);
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.5fr);
+}
+
+@media (max-width: 900px) {
+    .modal {
+        grid-template-columns: minmax(0, 1fr);
+        max-height: 95vh;
+    }
+}
+
+.modal-left {
+    padding: 18px 20px 16px;
+    overflow-y: auto;
+}
+
+.modal-right {
+    background: #05080f;
+    padding: 12px 16px 14px;
+    overflow-y: auto;
+}
+
+.modal-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.modal-role {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.modal-section-title {
+    font-size: 0.86rem;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.modal-text {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.modal-text ul {
+    margin: 4px 0 4px;
+    padding-left: 16px;
+}
+
+.modal-text ul li + li {
+    margin-top: 3px;
+}
+
+.modal-tags {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.modal-tag {
+    font-size: 0.74rem;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(8, 12, 22, 0.9);
+    color: var(--muted);
+}
+
+.modal-image-main {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.modal-image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.modal-image-grid img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    max-height: 180px;
+}
+
+.modal-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.modal-close {
+    border: none;
+    background: rgba(15, 19, 30, 0.9);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    background: rgba(30, 36, 52, 0.95);
+    color: #fff;
+}
+
+
+/* Немного сужаем двухколоночные блоки */
+.grid-narrow {
+    max-width: 1100px;   /* можно 1000–1150 по вкусу */
+    margin: 0 auto;      /* центрируем */
+}
+
+
+
+/* Общий контейнер картинок в модальном окне */
+.modal-images {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modal-image-block {
+    display: flex;
+    flex-direction: column;
+}
+
+/* расстояние между блоками картинок */
+.modal-image-block + .modal-image-block {
+    margin-top: 22px;       /* небольшой отступ между картинками */
+}
+
+.modal-caption {
+    font-size: 0.72rem;    /* шрифт чуть меньше */
+    color: var(--muted);
+    margin-top: 2px;       /* подпись ближе к картинке */
+}
+
+
+/* Одинаковый размер для всех изображений в модалке */
+.modal-image-stack {
+    display: block;
+    max-width: 100%;    /* никогда не шире контейнера */
+    width: 100%;        /* занять всю доступную ширину */
+    height: auto;       /* высота подстраивается автоматически */
+    border-radius: 12px;
+    object-fit: contain; /* можно вообще убрать эту строку */
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(98195976, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/98195976" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+<section class="seo-block" style="position:absolute; left:-9999px;">
+  <h1>Flight Control, UAV Systems and Applied Robotics</h1>
+  <p>
+    Applied engineering projects in flight control, UAV/UAS, robotics and autonomous systems:
+    flight dynamics, autopilots, telemetry analytics, MATLAB/Simulink, Python, machine learning and computer vision.
+  </p>
+</section>
+
+<div class="page">
+    <header>
+        <div class="nav">
+            <div class="nav-brand">
+                <!-- тут вставляем твой логотип -->
+                <img src="veloca-logo.png" alt="Veloca" class="nav-logo-img">
+                <div>   </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#research">Research</a>
+                <a href="#contact" class="primary-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="section">
+            <div class="hero">
+                <div>
+                    <div class="hero-main-title">Applied Flight Control & ML</div>
+                    <h1 class="hero-name">Sergey Teterin</h1>
+                    <div class="hero-role">
+                        Flight Control & UAV Systems Engineer — 20+ years in aircraft/helicopter control systems,
+                        flight dynamics, autopilots and guidance. Integrating ML & Computer Vision into aerospace and robotics.
+                    </div>
+
+                    <div class="hero-badges">
+                        <span class="badge">Open to remote worldwide</span>
+                        <span class="badge">Flight Dynamics • Autopilots • GNC</span>
+                        <span class="badge">UAV Logistics • Mission Quoting • SLA</span>
+                        <span class="badge muted">Engineering + ML/CV + Robotics</span>
+                    </div>
+
+                    <p class="hero-text">
+                        I work at the intersection of classical control theory, flight dynamics and modern machine learning.
+                        My experience includes development and validation of flight control laws, real-time and hardware-in-the-loop
+                        simulation, trajectory planning, sensor fusion and ML/CV-based perception and telemetry analytics.
+                        I also work on UAV delivery operations: mission quoting, SLA-driven planning and unit economics for repeatable routes.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary">Contact for collaboration</a>
+                        <a href="#projects" class="btn btn-outline">View technical projects</a>
+                    </div>
+                </div>
+
+                <aside class="hero-card">
+                    <div class="hero-card-title">Snapshot</div>
+                    <div class="hero-card-sub">Flight control • UAV • ML/CV • Embedded</div>
+
+                    <div class="hero-matrix">
+                        <div class="hero-matrix-item">
+                            <div class="hero-matrix-label">Experience</div>
+                            <div class="hero-matrix-value">20+ years</div>
+                        </div>
+                        <div class="hero-matrix-item">
+                            <div class="hero-matrix-label">Domains</div>
+                            <div class="hero-matrix-value">Aircraft, UAV, Robotics, UAV Logistics</div>
+                        </div>
+                        <div class="hero-matrix-item">
+                            <div class="hero-matrix-label">Key tools</div>
+                            <div class="hero-matrix-value">MATLAB, Python, C/C++</div>
+                        </div>
+                        <div class="hero-matrix-item">
+                            <div class="hero-matrix-label">Focus</div>
+                            <div class="hero-matrix-value">Autopilots, GNC & Mission Optimization</div>
+                        </div>
+                    </div>
+
+                    <div class="chip-row">
+                        <span class="chip">Flight Control Systems</span>
+                        <span class="chip">UAV / UAS</span>
+                        <span class="chip">UAV Logistics</span>
+                        <span class="chip">Mission Quoting &amp; SLA</span>
+                        <span class="chip">ML & CV</span>
+                        <span class="chip">Simulation</span>
+                        <span class="chip">Sensor Fusion</span>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ABOUT + SKILLS -->
+        <section class="section" id="about">
+            <div class="grid-2">
+                <div>
+                    <div class="section-title">About</div>
+                    <div class="section-subtitle">
+                        Flight control, UAVs, robotics and applied machine learning.
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                I’m a Flight Control and UAV Systems Engineer with more than 20 years of experience in
+                                aircraft and helicopter control systems, flight dynamics and autopilot algorithms.
+                            </p>
+                            <p>
+                                I design and validate control laws for fixed-wing aircraft, rotorcraft and UAVs; build
+                                dynamic flight models and simulation environments; and apply <strong>Machine Learning / Computer Vision</strong>
+                                to navigation, object tracking, perception and telemetry analytics.
+                            </p>
+                            <p>
+                                I enjoy working on challenging, cross-disciplinary problems where physics, control theory
+                                and data meet real-world systems.
+                            </p>
+                            <p>
+                                Open to <strong>remote opportunities worldwide</strong> — full-time, part-time or consulting.
+                            </p>
+                            <p style="margin-top: 10px;">
+                                More detailed portfolio and earlier projects:
+                                <a href="https://matlabwork.com/" class="inline-link">matlabwork.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="skills">
+                    <div class="section-title">Core skill set</div>
+                    <div class="section-subtitle">
+                        Selected skills used in recent projects.
+                    </div>
+                    <div class="card">
+                        <div class="skills-grid">
+                            <div class="skill-pill"><span>Flight Control Systems</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Flight Dynamics & Simulation</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Autopilot Algorithms</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>UAV / UAS</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Guidance, Navigation & Control</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Control Theory</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>MATLAB / Simulink</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Python</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>C / C++</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Machine Learning</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Computer Vision</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Sensor Fusion</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Embedded Systems / µControllers</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Robotics</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Data Analysis</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>CUDA</span><span class="skill-dot"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+ 
+<section class="section" id="projects">
+    <div class="section-title">Selected engineering projects</div>
+    <div class="section-subtitle">
+        Representative work across flight control, UAVs, ML/CV and autonomous systems.
+    </div>
+
+    <div class="grid-2">
+
+        <!-- ЛЕВАЯ КОЛОНКА: Portfolio cases -->
+        <div style="margin-top: 20px;">
+            <div class="section-title" style="font-size: 0.98rem; margin-bottom: 6px;">
+                Portfolio cases
+            </div>
+            <div class="section-subtitle">
+                Short, high-level view of selected projects. Click on a project to see details.
+            </div>
+
+            <div class="accordion">
+                <!-- Project 1: Autonomous UAV -->
+                <div class="accordion-card project-card" data-modal-open="uav-autonomous">
+                    <div class="accordion-body" style="display:block; border-top:none; margin-top:0; padding-top:0;">
+
+                        <div class="accordion-head" style="margin-bottom:10px;">
+                            <img src="uav_autonomous.jpg"
+                                 alt="Autonomous UAV preview"
+                                 class="accordion-thumb">
+                            <div>
+                                <div class="accordion-title">
+                                    Autonomous UAV Control System & Flight Dynamics Simulation (MATLAB)
+                                </div>
+                                <div class="accordion-meta">
+                                    Conceptual passenger UAV · control laws, dynamics, simulation
+                                </div>
+                            </div>
+                        </div>
+
+                        <p style="font-size:0.86rem; color:var(--muted); margin-bottom:6px;">
+                            Flight dynamics model, control laws and simulations for an autonomous
+                            tiltrotor UAV (eVTOL) using MATLAB/Simulink and Python.
+                        </p>
+
+                        <div class="accordion-tags">
+                            <span class="accordion-tag">MATLAB / Simulink</span>
+                            <span class="accordion-tag">UAV / eVTOL</span>
+                            <span class="accordion-tag">Flight Dynamics</span>
+                            <span class="accordion-tag">Autopilot</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Solar-powered UAV -->
+                <div class="accordion-card project-card" data-modal-open="solar-uav">
+                    <div class="accordion-body" style="display:block; border-top:none; margin-top:0; padding-top:0;">
+
+                        <div class="accordion-head" style="margin-bottom:10px;">
+                            <img src="solar_uav.jpg"
+                                 alt="Solar-powered UAV preview"
+                                 class="accordion-thumb">
+                            <div>
+                                <div class="accordion-title">
+                                    Development of a Solar-Powered UAV Prototype
+                                </div>
+                                <div class="accordion-meta">
+                                    Long-endurance UAV · energy balance, guidance & control
+                                </div>
+                            </div>
+                        </div>
+
+                        <p style="font-size:0.86rem; color:var(--muted); margin-bottom:6px;">
+                            Control algorithms and energy-aware trajectory planning for a solar-powered
+                            long-endurance UAV with modelling of power balance and mission profiles.
+                        </p>
+
+                        <div class="accordion-tags">
+                            <span class="accordion-tag">Solar UAV</span>
+                            <span class="accordion-tag">Energy-aware control</span>
+                            <span class="accordion-tag">MATLAB / Simulink</span>
+                            <span class="accordion-tag">UAV prototyping</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project: UAV Delivery Mission Optimization -->
+                <div class="accordion-card project-card" data-modal-open="uav-delivery">
+                    <div class="accordion-body" style="display:block; border-top:none; margin-top:0; padding-top:0;">
+                        <div class="accordion-head" style="margin-bottom:10px;">
+                            <img src="uav_autonomous.jpg"
+                                 alt="UAV delivery optimization preview"
+                                 class="accordion-thumb">
+                            <div>
+                                <div class="accordion-title">
+                                    UAV Delivery Mission Optimization
+                                </div>
+                                <div class="accordion-meta">
+                                    Mission quoting · route constraints · unit economics &amp; SLA
+                                </div>
+                            </div>
+                        </div>
+
+                        <p style="font-size:0.86rem; color:var(--muted); margin-bottom:6px;">
+                            Delivery-focused mission modeling: cost/time estimation, constraints &amp; risk factors,
+                            platform selection (multirotor/VTOL/fixed-wing) and operational KPI design.
+                        </p>
+
+                        <div class="accordion-tags">
+                            <span class="accordion-tag">UAV Logistics</span>
+                            <span class="accordion-tag">Mission Optimization</span>
+                            <span class="accordion-tag">Unit Economics</span>
+                            <span class="accordion-tag">SLA / Ops</span>
+                            <span class="accordion-tag">Simulation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: MC-21 Flight Control System -->
+                <div class="accordion-card project-card" data-modal-open="mc21-fcs">
+                    <div class="accordion-body" style="display:block; border-top:none; margin-top:0; padding-top:0;">
+
+                        <div class="accordion-head" style="margin-bottom:10px;">
+                            <img src="mc21_fcs.jpg"
+                                 alt="MC-21 flight control preview"
+                                 class="accordion-thumb">
+                            <div>
+                                <div class="accordion-title">
+                                    Flight Control System Algorithms · MC-21 Passenger Aircraft
+                                </div>
+                                <div class="accordion-meta">
+                                    Commercial airliner · control laws, modelling, test support
+                                </div>
+                            </div>
+                        </div>
+
+                        <p style="font-size:0.86rem; color:var(--muted); margin-bottom:6px;">
+                            Design and tuning of flight control laws for a MC-21 class passenger
+                            aircraft: modelling, stability and handling analysis, simulator and
+                            flight test support.
+                        </p>
+
+                        <div class="accordion-tags">
+                            <span class="accordion-tag">Flight Control System</span>
+                            <span class="accordion-tag">Passenger aircraft</span>
+                            <span class="accordion-tag">Flight Dynamics</span>
+                            <span class="accordion-tag">MATLAB / Simulink</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРАВАЯ КОЛОНКА: две карточки одна под другой -->
+        <div>
+            <!-- Card: Flight control & dynamics -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Flight control & dynamics</div>
+                        <div class="card-kicker">Aircraft, VTOL and UAV systems</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="project-list">
+                        <div class="project-item">
+                            <div class="project-title">Passenger aircraft flight control system</div>
+                            <div class="project-meta">
+                                Development and tuning of control laws, flight dynamics modelling, stability and
+                                handling-quality analysis, participation in simulation and testing.
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Passenger VTOL / eVTOL concept</div>
+                            <div class="project-meta">
+                                Conceptual flight control, transition and trajectory control, landing on a moving
+                                platform, simulation of urban air-taxi operations.
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Solar-powered UAV</div>
+                            <div class="project-meta">
+                                Development and testing of control algorithms for long-endurance solar UAV, including
+                                guidance, speed control and energy-aware trajectories.
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Trajectory control & landing on moving platform</div>
+                            <div class="project-meta">
+                                Modelling and simulation of approach, speed control and landing on moving deck/platform,
+                                including VTOL configurations.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: ML, CV & telemetry analytics -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">ML, CV & telemetry analytics</div>
+                        <div class="card-kicker">Perception & data-driven systems</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="project-list">
+                        <div class="project-item">
+                            <div class="project-title">UAV camera object tracking</div>
+                            <div class="project-meta">
+                                ML/CV pipeline for object detection and tracking in video, integration with guidance
+                                and navigation loops.
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Telemetry & sensor data analytics</div>
+                            <div class="project-meta">
+                                Processing of flight logs and sensor streams (Python), anomaly detection, performance
+                                metrics, dashboards for engineers and pilots.
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Group behaviour & UAV swarms</div>
+                            <div class="project-meta">
+                                Estimation and prediction of group behaviour in UAV-to-UAV interactions and swarms,
+                                simulation of cooperative scenarios.
+                            </div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Pilot performance evaluation systems</div>
+                            <div class="project-meta">
+                                Algorithms and metrics for pilot actions and performance assessment based on telemetry
+                                and simulator data.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /правая колонка -->
+
+    </div><!-- /grid-2 grid-narrow -->
+</section>
+
+
+
+
+
+
+        <!-- TELEGRAM / TOOLS / INSPIRATION -->
+        <section class="section" id="research">
+            <div class="grid-2">
+                <div>
+                    <div class="section-title">Applied tools & experiments</div>
+                    <div class="section-subtitle">
+                        Experiments with real-time data, automation and text analysis.
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="tagline">EXAMPLES</p>
+                            <ul class="list">
+                                <li>Kaggle forum alerts – notifications on new topics in the Kaggle ML forum.</li>
+                                <li>Media comments analysis – extracting opinions and theses from comment streams.</li>
+                                <li>Art on e-commerce platforms – selection of paintings by price, size and time listed.</li>
+                                <li>Change.org petitions – filtering petitions by specific phrases / topics.</li>
+                                <li>Economic calendar alerts – notifying before high-impact macro events, with historical data since 2011.</li>
+                                <li>Tattoo photography feed – daily selection of artistic photos from open sources.</li>
+                                <li>MATLAB & Simulink blog feed – daily digest of MathWorks engineering posts.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-title">Inspiration</div>
+                    <div class="section-subtitle">
+                        A few signals from outside engineering that shape how I think about systems and people.
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="tagline">SOURCES</p>
+                            <ul class="list">
+                                <li>Science-fiction films and short stories focused on people inside complex systems.</li>
+                                <li>Music videos with strong visual language and motion.</li>
+                                <li>Art and photography that explore cities, infrastructure and landscapes.</li>
+                                <li>Classical and modern literature, philosophy, essays on technology and society.</li>
+                            </ul>
+                            <p style="margin-top: 8px;">
+                                Outside of engineering I paint city and landscape scenes on canvas; some of this
+                                aesthetic finds its way back into how I design and think about systems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME / VOLUNTEER / ART -->
+        <section class="section">
+            <div class="columns-2">
+                <div>
+                    <div class="section-title">More about me</div>
+                    <div class="section-subtitle">
+                        Engineering background and parallel interests.
+                    </div>
+                    <div class="small-card">
+                        <div class="small-card-title">Profile</div>
+                        <p>
+                            Aviation specialist and professional control systems engineer. I combine classical
+                            control theory, flight dynamics, embedded development and ML/CV to build practical
+                            solutions in aerospace and robotics.
+                        </p>
+                        <p>
+                            Experience includes Android development (Android Studio, MATLAB), microcontroller
+                            programming and sensor integration, parallel computations on servers and cloud platforms
+                            (Azure, AWS), and web applications for data visualisation and control.
+                        </p>
+                        <p>
+                            I’m also a volunteer with the “House with a Lighthouse” hospice foundation.
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-title">Art & side projects</div>
+                    <div class="section-subtitle">
+                        Non-engineering work that complements the technical side.
+                    </div>
+                    <div class="small-card">
+                        <div class="small-card-title">Painting</div>
+                        <p>
+                            In my free time I paint cityscapes and landscapes (oil on canvas): river views, street
+                            scenes, architecture and small towns. This visual practice helps with thinking about
+                            composition, structure and dynamics — in both images and systems.
+                        </p>
+                        <div class="small-card-title" style="margin-top: 10px;">Robotics & experiments</div>
+                        <p>
+                            I enjoy building small experimental robots and simulation setups to explore control
+                            strategies, sensing and autonomy in a tangible way.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+    <div class="section-title">Contact & collaboration</div>
+    <div class="section-subtitle">
+        Open to remote collaboration worldwide — aerospace, UAV, robotics and applied ML/CV projects.
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <p>
+                If you are working on flight control systems, UAVs, autonomous vehicles or robotics and need
+                support with control, dynamics, simulation or ML/CV, feel free to reach out.
+            </p>
+            <p>
+                I can help with:
+            </p>
+            <ul class="list">
+                <li>Design and review of flight control laws, guidance and navigation algorithms.</li>
+                <li>Building and validating flight dynamics models and simulation environments.</li>
+                <li>Integrating ML/CV components into navigation, tracking and telemetry analysis pipelines.</li>
+                <li>Technical consulting, mentoring and architecture/algorithm reviews.</li>
+            </ul>
+
+            <p style="margin-top: 10px;">
+                You can reach me via:<br>
+                LinkedIn:
+                <a href="https://www.linkedin.com/in/devorvant/" class="inline-link">
+                    linkedin.com/in/devorvant
+                </a><br>
+                Email:
+                <a href="mailto:devorvant@gmail.com" class="inline-link">devorvant@gmail.com</a><br>
+                Telegram:
+                <a href="https://t.me/devorvant" class="inline-link">@devorvant</a>
+            </p>
+
+            <p>
+                Portfolio / legacy projects:
+                <a href="https://matlabwork.com/" class="inline-link">matlabwork.com</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div>© <span id="year"></span> Sergey Teterin — Flight Control & UAV Systems Engineering</div>
+            <div class="footer-links">
+                <span>Site: vvtol.com</span>
+                <span>•</span>
+                <span>Open to remote worldwide</span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+
+
+<!-- Modal: Autonomous UAV project -->
+
+<div class="modal-overlay" data-modal="uav-delivery">
+    <div class="modal">
+        <div class="modal-left">
+            <div class="modal-topbar">
+                <div class="modal-title">UAV Delivery Mission Optimization</div>
+                <button class="modal-close" type="button" data-modal-close="uav-delivery">Close ✕</button>
+            </div>
+
+            <div class="modal-role">Mission quoting · route constraints · unit economics &amp; SLA</div>
+
+            <div class="modal-section-title">Project description</div>
+            <div class="modal-text">
+                Delivery-focused mission engineering: estimating cost/time/energy, selecting an airframe
+                (multirotor / VTOL / fixed-wing), and defining operational KPIs and SOPs for repeatable routes.
+            </div>
+
+            <div class="modal-section-title">What I deliver</div>
+            <div class="modal-text">
+                <ul>
+                    <li>Mission quoting model (time/energy/cost) with constraints and risk factors</li>
+                    <li>Airframe class selection (S/M/L) and payload/container integration concept</li>
+                    <li>Ops KPIs: success rate, cycle time, cancellations, cost per mission / kg·km</li>
+                    <li>Telemetry logging and a plan→execute→report workflow for ops and billing</li>
+                </ul>
+            </div>
+
+            <div class="modal-section-title">Tools</div>
+            <div class="modal-tags">
+                <span class="modal-tag">MATLAB / Simulink</span>
+                <span class="modal-tag">Python</span>
+                <span class="modal-tag">Simulation</span>
+                <span class="modal-tag">GNC</span>
+                <span class="modal-tag">Ops engineering</span>
+            </div>
+        </div>
+
+        <div class="modal-right">
+            <div class="modal-section-title">Typical inputs</div>
+            <div class="modal-text">
+                <ul>
+                    <li>Route: points, distance, corridor / no-fly constraints</li>
+                    <li>Payload: mass, container/handling method, turnaround time</li>
+                    <li>Weather limits: wind / visibility / precipitation thresholds</li>
+                    <li>Ops assumptions: launch/landing, staffing, charging/refuel, spares</li>
+                </ul>
+            </div>
+
+            <div class="modal-section-title">Outputs for decision-making</div>
+            <div class="modal-text">
+                <ul>
+                    <li>Chosen platform class (S/M/L) and mission profile</li>
+                    <li>Cost per mission and cost per kg·km (with sensitivity drivers)</li>
+                    <li>Operational KPIs + SOP draft for repeatable execution</li>
+                    <li>Data requirements for a pilot (plan vs fact, cancellations, incidents)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-overlay" data-modal="uav-autonomous">
+    <div class="modal">
+        <div class="modal-left">
+            <div class="modal-topbar">
+                <div class="modal-title">
+                    Autonomous UAV Control System and Flight Dynamics Simulation
+                </div>
+                <button class="modal-close" type="button" data-modal-close="uav-autonomous">
+                    Close ✕
+                </button>
+            </div>
+
+            <div class="modal-role">
+                Role: Lead Control Systems & AI Engineer
+            </div>
+
+            <div class="modal-section-title">Project description</div>
+            <div class="modal-text">
+                <p>
+                    Development of a flight control and stabilization system for an autonomous UAV
+                    based on a tiltrotor configuration (eVTOL). The project included modelling
+                    of flight dynamics, control algorithms and energy optimization in MATLAB/Simulink.
+                </p>
+                <p>
+                    AI-based flight stability control and trajectory planning modules were implemented
+                    in Python and integrated with the onboard computer. Hardware-in-the-loop (HIL)
+                    simulation and testing were conducted to validate real-time performance.
+                </p>
+                <p>
+                    Results: improved flight stability, optimized power consumption and
+                    validated autonomous takeoff and landing scenarios.
+                </p>
+
+                <div class="modal-section-title">Skills and deliverables</div>
+                <ul>
+                    <li>MATLAB / Simulink – flight dynamics modelling and control design.</li>
+                    <li>Python – AI-based control modules and integration with onboard computer.</li>
+                    <li>Aerodynamic and energy analysis of eVTOL configuration.</li>
+                    <li>HIL simulation, test data analysis, performance tuning.</li>
+                </ul>
+
+                <div class="modal-tags">
+                    <span class="modal-tag">MATLAB</span>
+                    <span class="modal-tag">Simulink</span>
+                    <span class="modal-tag">Python</span>
+                    <span class="modal-tag">UAV / eVTOL</span>
+                    <span class="modal-tag">Flight Dynamics</span>
+                    <span class="modal-tag">Machine Learning</span>
+                </div>
+            </div>
+        </div>
+
+
+
+       <div class="modal-right">
+    <div class="modal-images">
+
+        <div class="modal-image-block">
+            <img src="uav_autonomous.jpg"
+                 alt="Autonomous tiltrotor UAV concept render"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                Concept render of the autonomous tiltrotor UAV (eVTOL) used for control system design.
+            </div>
+        </div>
+
+        <div class="modal-image-block">
+            <img src="r1.jpg"
+                 alt="Flight dynamics response plots"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                Flight dynamics response plots.  Conversion and acceleration to speed V=5-207км/h.
+                Presented : rotation of propellers; angles from inclination; nx, ny overloads; angular speed Wz; pitch angle -tang; speed V; energy expenditure W.
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+
+
+<!-- Modal: Solar-powered UAV project -->
+<div class="modal-overlay" data-modal="solar-uav">
+    <div class="modal">
+        <div class="modal-left">
+            <div class="modal-topbar">
+                <div class="modal-title">
+                    Development of a Solar-Powered UAV Prototype
+                </div>
+                <button class="modal-close" type="button" data-modal-close="solar-uav">
+                    Close ✕
+                </button>
+            </div>
+
+            <div class="modal-role">
+                My role: Lead Systems Engineer / Control & Simulation Specialist
+            </div>
+
+            <div class="modal-section-title">Project description</div>
+            <div class="modal-text">
+                <p>
+                    Designed and developed a prototype of a solar-powered unmanned aerial vehicle (UAV)
+                    for long-endurance missions. Work included modelling of aerodynamic performance,
+                    solar energy harvesting and power management systems.
+                </p>
+                <p>
+                    Developed control algorithms for stable flight and autonomous navigation in
+                    MATLAB/Simulink and C++. Integrated onboard sensors, energy storage and telemetry
+                    for continuous real-time monitoring and flight optimisation.
+                </p>
+                <p>
+                    Results: achieved stable autonomous flight with extended endurance and optimised
+                    energy balance between solar input and propulsion demands.
+                </p>
+
+                <div class="modal-section-title">Skills and deliverables</div>
+                <ul>
+                    <li>MATLAB/Simulink models of aerodynamics, energy and control loops.</li>
+                    <li>C++ control modules for onboard computer and navigation.</li>
+                    <li>Energy management and long-endurance mission analysis.</li>
+                    <li>Simulation of day–night cycles and seasonal conditions.</li>
+                </ul>
+
+                <div class="modal-tags">
+                    <span class="modal-tag">MATLAB</span>
+                    <span class="modal-tag">Simulink</span>
+                    <span class="modal-tag">C++</span>
+                    <span class="modal-tag">Solar UAV</span>
+                    <span class="modal-tag">Energy Management</span>
+                    <span class="modal-tag">Flight Control</span>
+                </div>
+            </div>
+        </div>
+
+      
+<div class="modal-right">
+    <div class="modal-images">
+
+        <div class="modal-image-block">
+            <img src="solar_uav.jpg"
+                 alt="Solar-powered UAV 3D model"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                3D model of the solar-powered UAV prototype for long-endurance missions.
+            </div>
+        </div>
+
+        <div class="modal-image-block">
+            <img src="r21.jpg"
+                 alt="Solar UAV structure and wing layout"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                Control system and aircraft,  MATLAB/Simulink model.
+            </div>
+        </div>
+
+        <div class="modal-image-block">
+            <img src="r22.jpg"
+                 alt="Simulink model of energy and control system"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                Calculation of moments with corrections from the propulsion system.
+            </div>
+        </div>
+
+        <div class="modal-image-block">
+            <img src="r23.jpg"
+                 alt="Energy balance and flight profile plots"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                Longitudinal channel moments from various control surfaces.
+            </div>
+        </div>
+
+
+        <div class="modal-image-block">
+            <img src="r24.jpg"
+                 alt="Flight dynamics response plots.  Coversion and acceleration to speed -207km/h"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                Catapult takeoff of the aircraft with acceleration and speed buildup  — Longitudinal velocity V (m/s)  — Acceleration a (m²/s) × g.
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+    </div>
+</div>
+
+
+
+
+<!-- Modal: MC-21 flight control system project -->
+<div class="modal-overlay" data-modal="mc21-fcs">
+    <div class="modal">
+        <div class="modal-left">
+            <div class="modal-topbar">
+                <div class="modal-title">
+                    Development Flight Control System Algorithms MC-21 Passenger Aircraft
+                </div>
+                <button class="modal-close" type="button" data-modal-close="mc21-fcs">
+                    Close ✕
+                </button>
+            </div>
+
+            <div class="modal-role">
+                My role: Lead Design Engineer — Control Systems Department, Irkut Corporation
+            </div>
+
+            <div class="modal-section-title">Project description</div>
+            <div class="modal-text">
+                <p>
+                    Design and development of flight control system algorithms for the MC-21 passenger
+                    aircraft. Responsibilities included flight dynamics modelling, system simulation in
+                    MATLAB/Simulink and test automation.
+                </p>
+                <p>
+                    The work covered calculation of control moments with propulsion system corrections,
+                    analysis of longitudinal and lateral stability, and integration of autopilot and
+                    safety logic. Supported both ground rig tests and flight test stages.
+                </p>
+                <p>
+                    Contributed to improved flight stability, control precision and overall safety
+                    during critical phases of flight.
+                </p>
+
+                <div class="modal-section-title">Skills and deliverables</div>
+                <ul>
+                    <li>Flight dynamics models and control law design for MC-21 class aircraft.</li>
+                    <li>MATLAB/Simulink simulation of normal, abnormal and failure scenarios.</li>
+                    <li>Analysis of stability, handling qualities and control margins.</li>
+                    <li>Support of simulator and flight tests, telemetry analysis and tuning.</li>
+                </ul>
+
+                <div class="modal-tags">
+                    <span class="modal-tag">MATLAB</span>
+                    <span class="modal-tag">Simulink</span>
+                    <span class="modal-tag">Flight Control System</span>
+                    <span class="modal-tag">Passenger Aircraft</span>
+                    <span class="modal-tag">Aerospace Engineering</span>
+                    <span class="modal-tag">Test & Validation</span>
+                </div>
+            </div>
+        </div>
+
+       
+<div class="modal-right">
+    <div class="modal-images">
+
+        <div class="modal-image-block">
+            <img src="mc21_fcs.jpg"
+                 alt="MC-21 in flight"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                MC-21 passenger aircraft in flight – control surfaces and high-angle manoeuvre.
+            </div>
+        </div>
+
+        <div class="modal-image-block">
+            <img src="r31.jpg"
+                 alt="MC-21 on ground"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                MC-21 on ground / hangar – aircraft configuration used in modelling and tests.
+            </div>
+        </div>
+
+        <div class="modal-image-block">
+            <img src="r32.jpg"
+                 alt="Flight control Simulink model"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                Simulink model of longitudinal flight control system (Elevator / THS).
+            </div>
+        </div>
+
+        <div class="modal-image-block">
+            <img src="r33.jpg"
+                 alt="Autopilot logic scheme"
+                 class="modal-image-stack">
+            <div class="modal-caption">
+                Lift-dump and drag control — Spoilers and Airbrakes.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+<script>
+    // Обновление года в подвале
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+
+    // Открытие модальных окон по атрибуту data-modal-open
+    document.querySelectorAll('[data-modal-open]').forEach(function (el) {
+        el.addEventListener('click', function () {
+            const id = el.getAttribute('data-modal-open');
+            const overlay = document.querySelector('.modal-overlay[data-modal="' + id + '"]');
+            if (overlay) {
+                overlay.classList.add('open');
+                  window.location.hash = id; // например #uav-autonomous
+            }
+        });
+    });
+
+    // Кнопки закрытия модальных окон
+    document.querySelectorAll('[data-modal-close]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const id = btn.getAttribute('data-modal-close');
+            const overlay = document.querySelector('.modal-overlay[data-modal="' + id + '"]');
+            if (overlay) {
+                overlay.classList.remove('open');
+                if (window.location.hash === '#' + id) {
+                history.replaceState(null, '', window.location.pathname);
+                   }
+            }
+        });
+    });
+
+    // Закрытие модального окна по клику по фону
+    document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) {
+                overlay.classList.remove('open');
+            }
+        });
+    });
+
+
+// Открыть модалку, если есть hash в адресе
+if (window.location.hash) {
+    const id = window.location.hash.substring(1); // без #
+    const overlay = document.querySelector('.modal-overlay[data-modal="' + id + '"]');
+    if (overlay) {
+        overlay.classList.add('open');
+    }
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
