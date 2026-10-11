@@ -699,12 +699,31 @@
 }
 
 .accordion-head > div { min-width: 0; }
+.vibration-preview {
+    width: 112px;
+    height: 84px;
+    flex-shrink: 0;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    border: 1px solid rgba(76, 194, 255, 0.3);
+    background: radial-gradient(circle at top left, #1b3452, #09101c);
+    color: var(--accent);
+}
+.vibration-preview strong { font-size: 1.4rem; line-height: 1.2; }
+.vibration-preview span { font-size: 0.7rem; color: var(--muted); }
+.vibration-focus { display: grid; gap: 14px; padding: 8px 0; }
+.vibration-focus .project-item { padding: 16px; }
+.vibration-focus .project-title { color: var(--text); margin-bottom: 8px; }
 .accordion-meta { font-size: 0.84rem; }
 .accordion-tag { font-size: 0.8rem; }
 
 @media (max-width: 480px) {
     .accordion-head { align-items: flex-start; }
     .accordion-thumb { width: 96px; height: 72px; }
+    .vibration-preview { width: 96px; height: 72px; }
 }
 
 
@@ -1102,6 +1121,29 @@
             </div>
 
             <div class="accordion">
+                <!-- Project: Active vibration isolation -->
+                <div class="accordion-card project-card" data-modal-open="active-vibration-isolation">
+                    <div class="accordion-body" style="display:block; border-top:none; margin-top:0; padding-top:0;">
+                        <div class="accordion-head" style="margin-bottom:10px;">
+                            <div class="vibration-preview" aria-hidden="true"><strong>6-DoF</strong><span>Active control</span></div>
+                            <div>
+                                <div class="accordion-title">6-DoF Active Vibration Isolation &amp; Stabilization</div>
+                                <div class="accordion-meta">CIF MSU · mechatronics · ongoing development</div>
+                            </div>
+                        </div>
+                        <p style="font-size:0.86rem; color:var(--muted); margin-bottom:6px;">
+                            Control algorithms, dynamic modeling and custom control electronics for an active
+                            vibration isolation platform for precision scientific and industrial equipment.
+                        </p>
+                        <div class="accordion-tags">
+                            <span class="accordion-tag">6-DoF Stabilization</span>
+                            <span class="accordion-tag">Active Damping</span>
+                            <span class="accordion-tag">Mechatronics</span>
+                            <span class="accordion-tag">Feedback Control</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Project 1: Autonomous UAV -->
                 <div class="accordion-card project-card" data-modal-open="uav-autonomous">
                     <div class="accordion-body" style="display:block; border-top:none; margin-top:0; padding-top:0;">
@@ -1515,6 +1557,77 @@
 
 
 
+
+<!-- Modal: Active vibration isolation project -->
+<div class="modal-overlay" data-modal="active-vibration-isolation">
+    <div class="modal">
+        <div class="modal-left">
+            <div class="modal-topbar">
+                <div class="modal-title">6-DoF Active Vibration Isolation &amp; Stabilization</div>
+                <button class="modal-close" type="button" data-modal-close="active-vibration-isolation">Close ✕</button>
+            </div>
+            <div class="modal-role">Control Systems &amp; Mechatronics Developer · CIF MSU · current project</div>
+
+            <div class="modal-section-title">Overview</div>
+            <div class="modal-text">
+                Development of an active vibration isolation and stabilization platform for precision
+                scientific and industrial equipment. The work combines multi-axis feedback control,
+                system dynamics, sensing, actuator integration and custom electronics.
+            </div>
+
+            <div class="modal-section-title">My contribution</div>
+            <div class="modal-text">
+                <ul>
+                    <li>Developing control algorithms for six-degree-of-freedom vibration isolation, stabilization and active damping.</li>
+                    <li>Modeling and analyzing system dynamics, mechanical resonances and closed-loop behavior.</li>
+                    <li>Integrating voice-coil actuators, spring suspension, geophones and position sensors.</li>
+                    <li>Developing custom control electronics and actuator drive systems.</li>
+                    <li>Working on the interaction between the mechanical platform, sensors and feedback controller.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section-title">Collaboration</div>
+            <div class="modal-text">
+                Collaboration on precision engineering projects with Asferika and Nanotronika.
+            </div>
+
+            <div class="modal-section-title">Technical areas</div>
+            <div class="modal-tags">
+                <span class="modal-tag">Control Systems</span>
+                <span class="modal-tag">Mechatronics</span>
+                <span class="modal-tag">Active Vibration Isolation</span>
+                <span class="modal-tag">6-DoF Stabilization</span>
+                <span class="modal-tag">Dynamic Modeling</span>
+                <span class="modal-tag">Feedback Control</span>
+                <span class="modal-tag">Voice-Coil Actuators</span>
+                <span class="modal-tag">Precision Engineering</span>
+            </div>
+        </div>
+
+        <div class="modal-right">
+            <div class="modal-section-title">System focus</div>
+            <div class="vibration-focus">
+                <div class="project-item">
+                    <div class="project-title">Multi-axis stabilization</div>
+                    <div class="project-meta">Control of platform translation and rotation across six degrees of freedom.</div>
+                    <div class="chip-row"><span class="chip">X</span><span class="chip">Y</span><span class="chip">Z</span><span class="chip">Roll</span><span class="chip">Pitch</span><span class="chip">Yaw</span></div>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">Sensing &amp; actuation</div>
+                    <div class="project-meta">Geophones and position sensors, voice-coil actuators and custom drive electronics.</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">Mechanical dynamics</div>
+                    <div class="project-meta">Spring suspension, mechanical resonances and coupling between platform motion and feedback control.</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">Engineering objective</div>
+                    <div class="project-meta">Vibration suppression and motion stabilization for precision scientific and industrial equipment.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal: Peltier temperature control project -->
 <div class="modal-overlay" data-modal="peltier-control">
@@ -2077,4 +2190,5 @@ if (window.location.hash) {
 
 </body>
 </html>
+
 
