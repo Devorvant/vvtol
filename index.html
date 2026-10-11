@@ -699,21 +699,10 @@
 }
 
 .accordion-head > div { min-width: 0; }
-.vibration-preview {
-    width: 112px;
-    height: 84px;
-    flex-shrink: 0;
-    display: grid;
-    align-content: center;
-    justify-items: center;
-    gap: 4px;
-    border-radius: 10px;
-    border: 1px solid rgba(76, 194, 255, 0.3);
-    background: radial-gradient(circle at top left, #1b3452, #09101c);
-    color: var(--accent);
-}
-.vibration-preview strong { font-size: 1.4rem; line-height: 1.2; }
-.vibration-preview span { font-size: 0.7rem; color: var(--muted); }
+.vibration-thumbnail { flex-shrink: 0; text-align: center; }
+.vibration-thumbnail .accordion-thumb { object-fit: contain; }
+.vibration-thumbnail span { display: block; margin-top: 4px; font-size: 0.68rem; color: var(--muted); }
+.vibration-image .modal-image-stack { max-height: 280px; }
 .vibration-focus { display: grid; gap: 14px; padding: 8px 0; }
 .vibration-focus .project-item { padding: 16px; }
 .vibration-focus .project-title { color: var(--text); margin-bottom: 8px; }
@@ -723,7 +712,6 @@
 @media (max-width: 480px) {
     .accordion-head { align-items: flex-start; }
     .accordion-thumb { width: 96px; height: 72px; }
-    .vibration-preview { width: 96px; height: 72px; }
 }
 
 
@@ -1125,7 +1113,10 @@
                 <div class="accordion-card project-card" data-modal-open="active-vibration-isolation">
                     <div class="accordion-body" style="display:block; border-top:none; margin-top:0; padding-top:0;">
                         <div class="accordion-head" style="margin-bottom:10px;">
-                            <div class="vibration-preview" aria-hidden="true"><strong>6-DoF</strong><span>Active control</span></div>
+                            <div class="vibration-thumbnail">
+                                <img src="vibration-isolation-concept.webp" alt="Concept illustration of an active vibration isolation platform" class="accordion-thumb" width="1536" height="1024" loading="lazy">
+                                <span>Concept illustration</span>
+                            </div>
                             <div>
                                 <div class="accordion-title">6-DoF Active Vibration Isolation &amp; Stabilization</div>
                                 <div class="accordion-meta">CIF MSU · mechatronics · ongoing development</div>
@@ -1605,6 +1596,10 @@
         </div>
 
         <div class="modal-right">
+            <div class="modal-image-block vibration-image">
+                <img src="vibration-isolation-concept.webp" alt="Concept illustration of a platform with spring suspension and active actuators" class="modal-image-stack" width="1536" height="1024" loading="lazy">
+                <div class="modal-caption">Concept illustration — indicative design, not the actual project hardware.</div>
+            </div>
             <div class="modal-section-title">System focus</div>
             <div class="vibration-focus">
                 <div class="project-item">
@@ -2190,5 +2185,6 @@ if (window.location.hash) {
 
 </body>
 </html>
+
 
 
