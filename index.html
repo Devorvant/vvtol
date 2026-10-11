@@ -17,7 +17,7 @@
             --accent: #4cc2ff;
             --accent-soft: rgba(76, 194, 255, 0.12);
             --text: #f5f7fb;
-            --muted: #a0a7b7;
+            --muted: #b4bdce;
             --border: #222836;
             --card-radius: 14px;
             --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.4);
@@ -93,6 +93,41 @@
             filter: drop-shadow(0 0 6px rgba(0,0,0,0.6));
         }
 
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 146px;
+            height: 54px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .nav-logo-img { flex-shrink: 0; }
+
+        .nav-identity { line-height: 1.4; }
+        .nav-identity span {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0;
+            color: var(--muted);
+        }
+
+        [id] { scroll-margin-top: 96px; }
+
+        a:focus-visible, [role="button"]:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 840px) {
+            .nav { flex-wrap: wrap; gap: 6px; }
+            .nav .nav-links { width: 100%; flex-wrap: wrap; gap: 4px; }
+            .nav-links a { padding: 6px 9px; }
+            [id] { scroll-margin-top: 150px; }
+        }
+
         .nav-links {
             display: flex;
             gap: 16px;
@@ -129,6 +164,7 @@
 
         .hero {
             display: grid;
+            align-items: start;
             grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
             gap: 30px;
             padding-top: 32px;
@@ -142,15 +178,15 @@
         }
 
         .hero-main-title {
-            font-size: 1.45rem;
-            letter-spacing: 0.26em;
+            font-size: 0.9rem;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 10px;
         }
 
         .hero-name {
-            font-size: 2.15rem;
+            font-size: clamp(2rem, 4vw, 2.6rem);
             font-weight: 700;
             margin: 2px 0 8px;
         }
@@ -243,7 +279,7 @@
         }
 
         .hero-card-sub {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--muted);
             margin-bottom: 10px;
         }
@@ -253,7 +289,7 @@
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 10px;
             margin-bottom: 6px;
-            font-size: 0.78rem;
+            font-size: 0.85rem;
         }
 
         .hero-matrix-item {
@@ -280,7 +316,7 @@
         }
 
         .chip {
-            font-size: 0.74rem;
+            font-size: 0.8rem;
             padding: 3px 8px;
             border-radius: 999px;
             background: rgba(8, 14, 26, 0.9);
@@ -346,7 +382,7 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 10px;
             margin-top: 8px;
         }
@@ -654,12 +690,21 @@
 }
 
 .accordion-thumb {
-    width: 52px;         /* размер превью – можно менять */
-    height: 52px;
+    width: 112px;
+    height: 84px;
     border-radius: 10px;
     object-fit: cover;
     flex-shrink: 0;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.accordion-head > div { min-width: 0; }
+.accordion-meta { font-size: 0.84rem; }
+.accordion-tag { font-size: 0.8rem; }
+
+@media (max-width: 480px) {
+    .accordion-head { align-items: flex-start; }
+    .accordion-thumb { width: 96px; height: 72px; }
 }
 
 
@@ -891,9 +936,8 @@
     <header>
         <div class="nav">
             <div class="nav-brand">
-                <!-- тут вставляем твой логотип -->
-                <img src="veloca-logo.png" alt="Veloca" class="nav-logo-img">
-                <div>   </div>
+                <div class="nav-logo"><img src="veloca-logo.png" alt="Veloca" class="nav-logo-img"></div>
+                <div class="nav-identity">Sergey Teterin<span>Engineering portfolio</span></div>
             </div>
             <nav class="nav-links">
                 <a href="#about">About</a>
@@ -910,25 +954,23 @@
         <section class="section">
             <div class="hero">
                 <div>
-                    <div class="hero-main-title">Applied Flight Control & ML</div>
+                    <div class="hero-main-title">Flight Control &amp; Mechatronics</div>
                     <h1 class="hero-name">Sergey Teterin</h1>
                     <div class="hero-role">
-                        Flight Control & UAV Systems Engineer — 20+ years in aircraft/helicopter control systems,
-                        flight dynamics, autopilots and guidance. Integrating ML & Computer Vision into aerospace and robotics.
+                        Flight Control &amp; UAV Systems Engineer with 20+ years of experience in
+                        aircraft and helicopter control systems, flight dynamics, autopilots and guidance.
                     </div>
 
                     <div class="hero-badges">
                         <span class="badge">Open to remote worldwide</span>
                         <span class="badge">Flight Dynamics • Autopilots • GNC</span>
-                        <span class="badge">UAV Logistics • Mission Quoting • SLA</span>
-                        <span class="badge muted">Engineering + ML/CV + Robotics</span>
+                        <span class="badge">Active Vibration Isolation • 6-DoF</span>
                     </div>
 
                     <p class="hero-text">
-                        I work at the intersection of classical control theory, flight dynamics and modern machine learning.
-                        My experience includes development and validation of flight control laws, real-time and hardware-in-the-loop
-                        simulation, trajectory planning, sensor fusion and ML/CV-based perception and telemetry analytics.
-                        I also work on UAV delivery operations: mission quoting, SLA-driven planning and unit economics for repeatable routes.
+                        I develop control algorithms, dynamic models and simulation environments in MATLAB/Simulink,
+                        Python and C/C++. My current work also includes active vibration isolation and precision
+                        mechatronics, with ML/CV applied to engineering tasks where it adds value.
                     </p>
 
                     <div class="hero-actions">
@@ -939,7 +981,7 @@
 
                 <aside class="hero-card">
                     <div class="hero-card-title">Snapshot</div>
-                    <div class="hero-card-sub">Flight control • UAV • ML/CV • Embedded</div>
+                    <div class="hero-card-sub">Control systems • Simulation • Embedded</div>
 
                     <div class="hero-matrix">
                         <div class="hero-matrix-item">
@@ -948,26 +990,23 @@
                         </div>
                         <div class="hero-matrix-item">
                             <div class="hero-matrix-label">Domains</div>
-                            <div class="hero-matrix-value">Aircraft, UAV, Robotics, UAV Logistics</div>
+                            <div class="hero-matrix-value">Aircraft, UAVs, Mechatronics</div>
                         </div>
                         <div class="hero-matrix-item">
                             <div class="hero-matrix-label">Key tools</div>
-                            <div class="hero-matrix-value">MATLAB, Python, C/C++</div>
+                            <div class="hero-matrix-value">MATLAB/Simulink, Python, C/C++</div>
                         </div>
                         <div class="hero-matrix-item">
                             <div class="hero-matrix-label">Focus</div>
-                            <div class="hero-matrix-value">Autopilots, GNC & Mission Optimization</div>
+                            <div class="hero-matrix-value">Autopilots, GNC, Stabilization</div>
                         </div>
                     </div>
 
                     <div class="chip-row">
                         <span class="chip">Flight Control Systems</span>
-                        <span class="chip">UAV / UAS</span>
-                        <span class="chip">UAV Logistics</span>
-                        <span class="chip">Mission Quoting &amp; SLA</span>
-                        <span class="chip">ML & CV</span>
+                        <span class="chip">6-DoF Control</span>
                         <span class="chip">Simulation</span>
-                        <span class="chip">Sensor Fusion</span>
+                        <span class="chip">Embedded Systems</span>
                     </div>
                 </aside>
             </div>
@@ -991,6 +1030,10 @@
                                 I design and validate control laws for fixed-wing aircraft, rotorcraft and UAVs; build
                                 dynamic flight models and simulation environments; and apply <strong>Machine Learning / Computer Vision</strong>
                                 to navigation, object tracking, perception and telemetry analytics.
+                            </p>
+                            <p>
+                                My current mechatronics work includes six-degree-of-freedom active vibration isolation,
+                                stabilization, actuator integration and custom control electronics for scientific and industrial equipment.
                             </p>
                             <p>
                                 I enjoy working on challenging, cross-disciplinary problems where physics, control theory
@@ -1020,6 +1063,9 @@
                             <div class="skill-pill"><span>UAV / UAS</span><span class="skill-dot"></span></div>
                             <div class="skill-pill"><span>Guidance, Navigation & Control</span><span class="skill-dot"></span></div>
                             <div class="skill-pill"><span>Control Theory</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Active Vibration Isolation</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>6-DoF Stabilization</span><span class="skill-dot"></span></div>
+                            <div class="skill-pill"><span>Mechatronics</span><span class="skill-dot"></span></div>
                             <div class="skill-pill"><span>MATLAB / Simulink</span><span class="skill-dot"></span></div>
                             <div class="skill-pill"><span>Python</span><span class="skill-dot"></span></div>
                             <div class="skill-pill"><span>C / C++</span><span class="skill-dot"></span></div>
@@ -2031,3 +2077,4 @@ if (window.location.hash) {
 
 </body>
 </html>
+
