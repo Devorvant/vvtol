@@ -709,6 +709,53 @@
 .accordion-meta { font-size: 0.84rem; }
 .accordion-tag { font-size: 0.8rem; }
 
+.current-project--mechatronics {
+    --project-color: #55d6c2;
+    --project-tint: rgba(85, 214, 194, 0.08);
+    --project-border: rgba(85, 214, 194, 0.3);
+}
+.current-project--aviation {
+    --project-color: #4cc2ff;
+    --project-tint: rgba(76, 194, 255, 0.08);
+    --project-border: rgba(76, 194, 255, 0.3);
+}
+.project-card.current-project {
+    border-color: var(--project-border);
+    border-left: 3px solid var(--project-color);
+    background: linear-gradient(120deg, var(--project-tint), rgba(9, 13, 23, 0.96));
+}
+.project-card.current-project:hover, .project-card.current-project:focus-within {
+    border-color: var(--project-color);
+}
+.project-status {
+    display: inline-flex;
+    margin-bottom: 10px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--project-border);
+    background: var(--project-tint);
+    color: var(--project-color);
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+.current-project .accordion-tag {
+    border-color: var(--project-border);
+    background: var(--project-tint);
+}
+.project-open-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--project-color);
+    font: inherit;
+    font-size: 0.84rem;
+    cursor: pointer;
+}
+
 @media (max-width: 480px) {
     .accordion-head { align-items: flex-start; }
     .accordion-thumb { width: 96px; height: 72px; }
@@ -1110,8 +1157,9 @@
 
             <div class="accordion">
                 <!-- Project: Active vibration isolation -->
-                <div class="accordion-card project-card" data-modal-open="active-vibration-isolation">
+                <div class="accordion-card project-card current-project current-project--mechatronics" data-modal-open="active-vibration-isolation">
                     <div class="accordion-body" style="display:block; border-top:none; margin-top:0; padding-top:0;">
+                        <span class="project-status">Current project</span>
                         <div class="accordion-head" style="margin-bottom:10px;">
                             <div class="vibration-thumbnail">
                                 <img src="vibration-isolation-concept.webp" alt="Concept illustration of an active vibration isolation platform" class="accordion-thumb" width="1536" height="1024" loading="lazy">
@@ -1132,12 +1180,14 @@
                             <span class="accordion-tag">Mechatronics</span>
                             <span class="accordion-tag">Feedback Control</span>
                         </div>
+                        <button class="project-open-hint" type="button" aria-label="View active vibration isolation project">View project <span aria-hidden="true">→</span></button>
                     </div>
                 </div>
 
                 <!-- Project 1: Autonomous UAV -->
-                <div class="accordion-card project-card" data-modal-open="uav-autonomous">
+                <div class="accordion-card project-card current-project current-project--aviation" data-modal-open="uav-autonomous">
                     <div class="accordion-body" style="display:block; border-top:none; margin-top:0; padding-top:0;">
+                        <span class="project-status">Current project</span>
 
                         <div class="accordion-head" style="margin-bottom:10px;">
                             <img src="uav_autonomous.jpg"
@@ -1164,6 +1214,7 @@
                             <span class="accordion-tag">Flight Dynamics</span>
                             <span class="accordion-tag">Autopilot</span>
                         </div>
+                        <button class="project-open-hint" type="button" aria-label="View eVTOL control and simulation project">View project <span aria-hidden="true">→</span></button>
                     </div>
                 </div>
 
@@ -2185,6 +2236,7 @@ if (window.location.hash) {
 
 </body>
 </html>
+
 
 
 
