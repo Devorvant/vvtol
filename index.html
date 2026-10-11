@@ -742,6 +742,24 @@
     border-color: var(--project-border);
     background: var(--project-tint);
 }
+.project-card:not(.current-project) {
+    --project-color: #8ebddf;
+    --project-border: rgba(76, 194, 255, 0.18);
+    --project-hover: rgba(76, 194, 255, 0.45);
+    --project-tint: rgba(76, 194, 255, 0.035);
+    border-color: var(--project-border);
+    border-left: 2px solid var(--project-border);
+    background: linear-gradient(120deg, var(--project-tint), rgba(9, 13, 23, 0.96));
+}
+.project-card[data-modal-open="peltier-control"] {
+    --project-color: #d8b981;
+    --project-border: rgba(216, 185, 129, 0.18);
+    --project-hover: rgba(216, 185, 129, 0.45);
+    --project-tint: rgba(216, 185, 129, 0.035);
+}
+.project-card:not(.current-project):hover, .project-card:not(.current-project):focus-within {
+    border-color: var(--project-hover);
+}
 .project-open-hint {
     display: inline-flex;
     align-items: center;
@@ -1247,6 +1265,7 @@
                             <span class="accordion-tag">MATLAB / Simulink</span>
                             <span class="accordion-tag">UAV prototyping</span>
                         </div>
+                        <button class="project-open-hint" type="button" aria-label="View solar-powered UAV project">View project <span aria-hidden="true">→</span></button>
                     </div>
                 </div>
 
@@ -1279,6 +1298,7 @@
                             <span class="accordion-tag">SLA / Ops</span>
                             <span class="accordion-tag">Simulation</span>
                         </div>
+                        <button class="project-open-hint" type="button" aria-label="View UAV delivery optimization project">View project <span aria-hidden="true">→</span></button>
                     </div>
                 </div>
 
@@ -1312,6 +1332,7 @@
                             <span class="accordion-tag">Flight Dynamics</span>
                             <span class="accordion-tag">MATLAB / Simulink</span>
                         </div>
+                        <button class="project-open-hint" type="button" aria-label="View MC-21 flight control project">View project <span aria-hidden="true">→</span></button>
                     </div>
                 </div>
 
@@ -1343,6 +1364,7 @@
                             <span class="accordion-tag">Python / PySide6</span>
                             <span class="accordion-tag">PID Control</span>
                         </div>
+                        <button class="project-open-hint" type="button" aria-label="View STM32 Peltier temperature control project">View project <span aria-hidden="true">→</span></button>
                     </div>
                 </div>
 
@@ -2236,6 +2258,7 @@ if (window.location.hash) {
 
 </body>
 </html>
+
 
 
 
